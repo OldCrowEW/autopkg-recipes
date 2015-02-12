@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the current release version of Tunnelblick and imports into Munki.</string>
+	<key>Identifier</key>
+	<string>net.tunnelblick.tunnelblick</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Tunnelblick</string>
+		<key>MUNKI_REPO_SUBDIR</key>
+		<string>apps</string>
+		<key>pkginfo</key>
+		<dict>
+			<key>catalogs</key>
+			<array>
+				<string>testing</string>
+			</array>
+			<key>category</key>
+			<string>Internet</string>
+			<key>description</key>
+			<string>Tunnelblick is a free, open source graphic user interface for OpenVPN on OS X. It provides easy control of OpenVPN client and/or server connections. It comes as a ready-to-use application with all necessary binaries and drivers (including OpenVPN, easy-rsa, and tun/tap drivers). No additional installation is necessary -- just add your configuration and encryption information.</string>
+			<key>developer</key>
+			<string>Angelo Laub et al.</string>
+			<key>display_name</key>
+			<string>Tunnelblick</string>
+			<key>name</key>
+			<string>%NAME%</string>
+			<key>unattended_install</key>
+			<true/>
+		</dict>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>0.3.0</string>
+	<key>ParentRecipe</key>
+	<string>net.tunnelbick.tunnelblick</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Processor</key>
+			<string>MunkiPkginfoMerger</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>pkg_path</key>
+				<string>%pathname%</string>
+				<key>repo_subdirectory</key>
+				<string>%MUNKI_REPO_SUBDIR%</string>
+			</dict>
+			<key>Processor</key>
+			<string>MunkiImporter</string>
+		</dict>
+	</array>
+</dict>
+</plist>
